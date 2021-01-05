@@ -56,11 +56,6 @@ class Girokonto(Konto):
                 p = self._kontostand - wert
                 if p > self._limit:
                     return f'Limit erreicht, Abbuchung nicht möglich'
-            else:
-                q = self._kontostand + wert
-                if q > self._limit:
-                    return f'Limit erreicht, Abbuchung nicht möglich'
-
         return wert
 
 
