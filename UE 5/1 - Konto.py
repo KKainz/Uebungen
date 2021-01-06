@@ -27,7 +27,7 @@ class Konto:
         return f'Kontostand {self._inhaber}: {self._kontostand}'
 
 
-class Sparkonto(Konto):
+class SparKonto(Konto):
 
     def auszahlen(self, wert: float) -> float:
         if wert < 0:
@@ -40,7 +40,7 @@ class Sparkonto(Konto):
         return wert
 
 
-class Girokonto(Konto):
+class GiroKonto(Konto):
 
     def __init__(self, inhaber: str, limit: float):
         super().__init__(inhaber)
@@ -58,26 +58,30 @@ class Girokonto(Konto):
                     return f'Limit erreicht, Abbuchung nicht möglich'
         return wert
 
+class JugendGiroKonto(GiroKonto):
 
+    def __init__(self, inhaber: str, limit: float, buchungslimit: float):
+        super().__init__(inhaber, limit)
+        self._buchungslimit = buchungslimit
 
-
-
-
-
-
+    def auszahlen(self, wert: float) -> float:
+        if wert > 0:
+            if wert <= self._buchungslimit:
+                return self._kontostand - wert
+            else:
+                return f'Buchungslimit erreicht'
+        return wert
 
 
 if __name__ == '__main__':
+
     a = Konto("Andi")
-    a.einzahlen(1500)
-    a.auszahlen(1600)
-    print(a.__repr__())
+    b = SparKonto("Berta")
+    c = GiroKonto("Carsten", 500)
+    d = JugendGiroKonto("Dana", 200, 100)
 
-    b = Sparkonto("Berta")
-    print(b.auszahlen(2))
-    print(b.__repr__())
-
-    c = Girokonto("Carsten", 500)
-    c.auszahlen(499)
-    print(c.__str__())
-
+    l = [a, b, c, d]
+    for konto in l:
+        konto.einzahlen(500)
+        print(konto.auszahlen(50))
+        print(konto)
