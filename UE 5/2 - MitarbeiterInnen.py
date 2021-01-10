@@ -67,5 +67,5 @@ if __name__ == '__main__':
     mg.add_employee(Employee("Anders", "Andi", "C", 1900))
     mg.add_employee(FixCommissionEmployee("Baer", "Bernd", "B", 1900, 500))
     mg.add_employee(PercentCommissionEmployee("Casd", "Chris", "C", 1900, 10))
-    #print(mg.calc_total_salary())
+    print(mg.calc_total_salary())
     print(mg.get_salary_by_department())

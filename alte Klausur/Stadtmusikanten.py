@@ -176,23 +176,17 @@ class Quartett:
 
 
 if __name__ == '__main__':
-    horn = Instrument('Horn', 9.1)
-    floete = Instrument('Flöte', 3.5)
-    git = Instrument('Gitarre', 4.1)
-    trommel = Instrument('Trommel', 7.9)
+    horn = Instrument('Horn', 5)
+    floete = Instrument('Flöte', 6)
+    git = Instrument('Gitarre', 4)
+    trommel = Instrument('Trommel', 8)
 
-    esel = Esel(4, horn, 6.1)
-    hund = Hund(4, git, 4.1)
-    katze = Katze(3, floete, 10)
-    hahn = Hahn(2, trommel, 3.4)
-
-    print(esel.verscheuche_raeuber())
-    print(katze.verscheuche_raeuber())
-    print(hahn.spiele_musik())
-    print(hund.spiele_musik())
+    esel = Esel(4, horn, 6.5)
+    hund = Hund(4, git, 5.9)
+    katze = Katze(3, floete, 8.2)
+    hahn = Hahn(2, trommel, 3)
 
     qua = Quartett()
-
     qua.add(katze)
     qua.add(hund)
     qua.add(hahn)
